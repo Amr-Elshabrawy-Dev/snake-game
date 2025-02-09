@@ -78,13 +78,9 @@ async function sendScoreEmail(playerData, score) {
   };
 
   try {
-    await emailjs.send(
-      EMaILJS_SERVICE_ID,
-      EMaILJS_TEMPLATE_ID,
-      templateParams
-    );
+    await emailjs.send(EMaILJS_SERVICE_ID, EMaILJS_TEMPLATE_ID, templateParams);
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error("Error sending email:", error);
   }
 }
 
@@ -526,3 +522,41 @@ function applyTheme() {
 
 // Add to initialization
 loadSettings();
+
+// Game Configuration
+const CONFIG = {
+  GRID_SIZE: 20,
+  INITIAL_SPEED: 200,
+  MIN_SPEED: 60,
+  SPEED_INCREMENT: 10,
+  SCORE_INCREMENT: 10,
+};
+
+// Game State
+const gameState = {
+  isRunning: false,
+  isPaused: false,
+  score: 0,
+  speed: CONFIG.INITIAL_SPEED,
+  // ...existing code...
+};
+
+// Game Controller
+const GameController = {
+  init() {
+    this.loadSettings();
+    this.setupEventListeners();
+    this.generateFood();
+    this.updateSpeedDisplay();
+    this.displayTopScores();
+  },
+
+  setupEventListeners() {
+    document.addEventListener("keydown", this.handleKeyPress.bind(this));
+    // ...existing code...
+  },
+  // ...existing code...
+};
+
+// Initialize game
+GameController.init();

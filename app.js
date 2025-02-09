@@ -136,11 +136,11 @@ function displayTopScores() {
         day: 'numeric'
       });
 
-      const rank = index === 0 ? '🏆' : `${index + 1}.`;
+      const rank = index === 0 ? '🏆' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}.`;
 
       return `
         <li class="score-item ${index < 3 ? "top-three" : ""}">
-          <span class="rank" title="rank">${rank}</span>
+          <span class="rank" title="rank ${index + 1}">${rank}</span>
           <span class="player-name" title="${score.name}">${score.name}</span>
           <span class="score-value" title="score">${score.score.toLocaleString()}</span>
           <span class="date" title="date">${formattedDate}</span>

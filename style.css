@@ -74,10 +74,9 @@ body.light-theme .game-container {
 
 /* Composition Layer */
 .game-header {
-  display: grid;
-  grid-template-areas:
-    "score speed settings"
-    "controls controls controls";
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 20px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
@@ -127,7 +126,7 @@ canvas {
   display: block;
 }
 
-.score-item {
+.score-display {
   color: var(--accent-color);
   font-weight: 700;
   justify-self: start;

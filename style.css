@@ -1,3 +1,4 @@
+/* Base Variables */
 :root {
   --primary-color: #6c5ce7;
   --secondary-color: #a881e6;
@@ -71,11 +72,13 @@ body.light-theme .game-container {
   background: var(--light-surface);
 }
 
+/* Composition Layer */
 .game-header {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "score speed settings"
+    "controls controls controls";
   gap: 20px;
-  margin-bottom: 20px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
   -webkit-backdrop-filter: blur(8px);
@@ -156,7 +159,7 @@ canvas {
 }
 
 .controls-hint {
-  color: rgba(0, 210, 211,0.8);
+  color: rgba(0, 210, 211, 0.8);
   font-size: 0.7rem;
   gap: 8px;
   grid-column: span 3;
@@ -246,6 +249,21 @@ canvas {
   }
 }
 
+/* Utility Layer */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gradient-text {
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Block Layer */
 @media (max-width: 600px) {
   .game-header {
     flex-direction: column;
@@ -320,7 +338,7 @@ canvas {
   color: var(--text-color);
 }
 
-.form-group input[type=color] {
+.form-group input[type="color"] {
   width: 60px;
   height: 60px;
 }
@@ -523,4 +541,16 @@ canvas {
   flex-direction: column;
   gap: 20px;
   margin-bottom: 24px;
+}
+
+/* Exceptions Layer */
+@media (max-width: 600px) {
+  .game-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .controls {
+    justify-content: center;
+  }
 }

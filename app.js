@@ -122,16 +122,32 @@ function saveScore(score) {
 // Display top scores
 function displayTopScores() {
   const scores = JSON.parse(localStorage.getItem("snakeGameScores") || "[]");
+  if (scores.length === 0) {
+    topScoresList.innerHTML = '<li class="no-scores">No scores yet. Be the first!</li>';
+    return;
+  }
+
   topScoresList.innerHTML = scores
-    .map(
-      (score, index) => `
-            <li>
-                <span>${index + 1}. ${score.name}</span>
-                <span>${score.score}</span>
-            </li>
-        `
-    )
-    .join("");
+    .map((score, index) => {
+      const date = new Date(score.date);
+      const formattedDate = date.toLocaleDateString(undefined, {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+
+      const rank = index === 0 ? '🏆' : `${index + 1}.`;
+
+      return `
+        <li class="score-item ${index < 3 ? "top-three" : ""}">
+          <span class="rank" title="rank">${rank}</span>
+          <span class="player-name" title="${score.name}">${score.name}</span>
+          <span class="score-value" title="score">${score.score.toLocaleString()}</span>
+          <span class="date" title="date">${formattedDate}</span>
+        </li>
+      `;
+    })
+    .join('');
 }
 
 // Show game over and save score

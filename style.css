@@ -193,7 +193,7 @@ canvas {
 }
 
 .game-over-content {
-  width: 320px;
+  width: 400px;
   text-align: center;
   color: var(--text-color);
   padding: 32px;
@@ -214,6 +214,13 @@ canvas {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.game-over-content .final-score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 #restartBtn {
@@ -390,17 +397,6 @@ canvas {
   margin: 0;
 }
 
-.ranking-list li {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.ranking-list li:last-child {
-  border-bottom: none;
-}
-
 .snake-segment {
   background: var(--snake-gradient);
   border-radius: 8px;
@@ -553,4 +549,166 @@ canvas {
   .controls {
     justify-content: center;
   }
+}
+
+/* Add new classes for score list items */
+.score-item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 3fr 2fr 3fr;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.score-item:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.score-item .rank {
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.score-item .player-name {
+  color: var(--text-color);
+  text-align: left;
+  font-size: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.score-item .score-value {
+  color: var(--success-color);
+  font-weight: bold;
+}
+
+.score-item .date {
+  color: var(--text-color);
+  opacity: 0.7;
+  font-size: 0.8rem;
+}
+
+.score-item.top-three {
+  background: rgba(108, 92, 231, 0.2);
+  border-left: 3px solid var(--primary-color);
+}
+
+.no-scores {
+  text-align: center;
+  color: var(--text-color);
+  opacity: 0.7;
+  padding: 20px;
+}
+
+/* New styles for final score display */
+#finalScore {
+  font-size: 48px;
+  font-weight: bold;
+  color: var(--accent-color);
+  margin: 20px 0;
+  text-shadow: 0 0 10px rgba(0, 210, 211, 0.5);
+}
+
+/* Settings modal enhancements */
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Error handling styles */
+.error-message {
+  color: var(--error-color);
+  background: rgba(255, 71, 87, 0.1);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px 0;
+  font-size: 0.9em;
+  display: none;
+}
+
+.error-message.active {
+  display: block;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* Player name display enhancement */
+#playerName {
+  font-weight: bold;
+  color: var(--accent-color);
+  background: rgba(108, 92, 231, 0.1);
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.9em;
+}
+
+/* Speed value enhancement */
+#speedValue {
+  font-family: monospace;
+  font-size: 1.2em;
+  color: var(--accent-color);
+  text-shadow: 0 0 10px rgba(0, 210, 211, 0.3);
+}
+
+/* Game paused overlay */
+.game-paused {
+  position: absolute;
+  inset: 0;
+  background: rgba(24, 25, 47, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+}
+
+.game-paused.active {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+.game-paused span {
+  color: var(--text-color);
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Light theme adjustments */
+body.light-theme .score-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .score-item.top-three {
+  background: rgba(108, 92, 231, 0.1);
+}
+
+body.light-theme .error-message {
+  background: rgba(255, 71, 87, 0.1);
+}
+
+body.light-theme #playerName {
+  background: rgba(108, 92, 231, 0.1);
 }

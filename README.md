@@ -1,12 +1,13 @@
-# 🐍 Snake Game with JavaScript
-
 <div align="center">
+
+# 🐍 Snake Game
 
 [**🌐 View Live Demo**](https://amr-elshabrawy-dev.github.io/snake-game/) | [**📦 GitHub Repo**](https://github.com/Amr-Elshabrawy-Dev/snake-game)
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/Amr-Elshabrawy-Dev/snake-game?style=social&logo=github) ![GitHub stars](https://img.shields.io/github/stars/Amr-Elshabrawy-Dev/snake-game?style=social) ![GitHub forks](https://img.shields.io/github/forks/Amr-Elshabrawy-Dev/snake-game?style=social) ![GitHub watchers](https://img.shields.io/github/watchers/Amr-Elshabrawy-Dev/snake-game?style=social)
 
-This is a simple snake game made with JavaScript, HTML, and CSS. The game includes features such as player registration, score tracking, and customizable settings.
+A modern implementation of the classic Snake game using vanilla JavaScript with a focus on code quality and maintainability.
+
 </div>
 
 ## ✨ Features

@@ -4,7 +4,7 @@
 
 [**🌐 View Live Demo**](https://amr-elshabrawy-dev.github.io/snake-game/) | [**📦 GitHub Repo**](https://github.com/Amr-Elshabrawy-Dev/snake-game)
 
-![GitHub repo size](https://img.shields.io/github/repo-size/Amr-Elshabrawy-Dev/snake-game?style=social&logo=github) ![GitHub stars](https://img.shields.io/github/stars/Amr-Elshabrawy-Dev/snake-game?style=social) ![GitHub forks](https://img.shields.io/github/forks/Amr-Elshabrawy-Dev/snake-game?style=social) ![GitHub watchers](https://img.shields.io/github/watchers/Amr-Elshabrawy-Dev/snake-game?style=social)
+![GitHub repo size](https://img.shields.io/github/repo-size/Amr-Elshabrawy-Dev/snake-game?style=social&logo=github) ![GitHub stars](https://img.shields.io/github/stars/Amr-Elshabrawy-Dev/snake-game?style=social) ![GitHub forks](https://img.shields.io/github/forks/Amr-Elshabrawy-Dev/snake-game?style=social)
 
 A modern implementation of the classic Snake game using vanilla JavaScript with a focus on code quality and maintainability.
 
@@ -108,11 +108,9 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ---
 
   <div align="center">
-    <h1 style="color: #2ea44f;">👨‍💻 AMR ELSHABRAWY</h1>
-      <img src="./amr.svg" alt="Amr Elshabrawy Logo" width="100px" style="margin: 1rem 0;">
-      <p style="color: #586069; font-size: 1.1rem; margin-top: 1rem;">
-        Created with 💚 by <strong><a href="https://github.com/Amr-Elshabrawy-Dev">AMR ELSHABRAWY</a></strong> 🌟 &copy; 2025
-      </p>
-  </div>
+  <h2>🌟 Created with 💚 by Amr Elshabrawy</h2>
+  <img src="./amr.svg" alt="Logo" width="80">
+  <p>© 2025 - All rights reserved</p>
+</div>
 
 ---

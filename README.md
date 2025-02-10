@@ -55,18 +55,35 @@ During the development of this Snake Game, several technical challenges were enc
    - Create a new email service and template.
    - Update `app.js` with your EmailJS credentials:
 
-     ```javascript
-     // Initialize EmailJS with your public key
-     emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // Replace with your EmailJS public key
-     const EMaILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-     const EMaILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-     ```
+   ```javascript
+   // Initialize EmailJS with your public key
+   emailjs.init("YOUR_EMAILJS_PUBLIC_KEY");
+   const EMaILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+   const EMaILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+   ```
 
-## 🎮 Usage
+## 🎮 Game Controls
 
-- **Start/Pause**: Press the `Space` key to start or pause the game.
-- **Move Snake**: Use the arrow keys (`↑`, `↓`, `←`, `→`) or `W`, `A`, `S`, `D` keys to move the snake.
-- **Restart Game**: Click the "Restart Game" button when the game is over.
+### Desktop Controls 🖥️
+
+- **Start/Pause**: `Space` key
+- **Movement**:
+  - Arrow keys (`↑`, `↓`, `←`, `→`)
+  - Or `W`, `A`, `S`, `D` keys
+- **Restart**: `R` key or click "Restart" button
+
+### Mobile Controls 📱
+
+- **Start/Pause**: Tap screen center
+- **Movement**: Swipe in desired direction
+- **Restart**: Double tap screen
+
+### Game Actions 🎯
+
+- Collect food 🍎 to grow longer
+- Avoid hitting walls and yourself
+- Track your high score
+- Access settings through ⚙️ menu
 
 ## ⚙️ Configuration
 

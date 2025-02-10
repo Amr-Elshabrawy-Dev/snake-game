@@ -123,7 +123,8 @@ function saveScore(score) {
 function displayTopScores() {
   const scores = JSON.parse(localStorage.getItem("snakeGameScores") || "[]");
   if (scores.length === 0) {
-    topScoresList.innerHTML = '<li class="no-scores">No scores yet. Be the first!</li>';
+    topScoresList.innerHTML =
+      '<li class="no-scores">Play and register to be the first on the leaderboard!</li>';
     return;
   }
 
@@ -131,12 +132,19 @@ function displayTopScores() {
     .map((score, index) => {
       const date = new Date(score.date);
       const formattedDate = date.toLocaleDateString(undefined, {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
+        year: "numeric",
+        month: "short",
+        day: "numeric",
       });
 
-      const rank = index === 0 ? '🏆' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}.`;
+      const rank =
+        index === 0
+          ? "🏆"
+          : index === 1
+          ? "🥈"
+          : index === 2
+          ? "🥉"
+          : `${index + 1}.`;
 
       return `
         <li class="score-item ${index < 3 ? "top-three" : ""}">
@@ -147,7 +155,7 @@ function displayTopScores() {
         </li>
       `;
     })
-    .join('');
+    .join("");
 }
 
 // Show game over and save score

@@ -66,6 +66,9 @@ function loadPlayerData() {
     registerBtn.children[1].textContent = "Change Player";
     logoutBtn.classList.add("show"); // Show logout button
   } else {
+    currentPlayer = { name: "Guest", email: "" };
+    playerNameDisplay.textContent = "Guest";
+    registerBtn.children[1].textContent = "Register";
     logoutBtn.classList.remove("show"); // Hide logout button
   }
 }
@@ -597,27 +600,35 @@ canvas.addEventListener(
 canvas.addEventListener(
   "touchend",
   (e) => {
-    if (!isGameRunning || isPaused) {
-      startGame();
-      return;
-    }
-
     const touchEndX = e.changedTouches[0].clientX;
     const touchEndY = e.changedTouches[0].clientY;
-
     const deltaX = touchEndX - touchStartX;
     const deltaY = touchEndY - touchStartY;
 
-    // Determine if the swipe was primarily horizontal or vertical
+    // If it's a small movement (tap) rather than a swipe
+    if (
+      Math.abs(deltaX) < MIN_SWIPE_DISTANCE &&
+      Math.abs(deltaY) < MIN_SWIPE_DISTANCE
+    ) {
+      if (!isGameRunning) {
+        startGame();
+      } else {
+        pauseGame();
+      }
+      return;
+    }
+
+    // Only process swipe controls if game is running and not paused
+    if (!isGameRunning || isPaused) return;
+
+    // Handle swipe movements for snake direction
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
       // Horizontal swipe
       if (Math.abs(deltaX) >= MIN_SWIPE_DISTANCE) {
         if (deltaX > 0 && dx === 0) {
-          // Right swipe
           dx = grid;
           dy = 0;
         } else if (deltaX < 0 && dx === 0) {
-          // Left swipe
           dx = -grid;
           dy = 0;
         }
@@ -626,11 +637,9 @@ canvas.addEventListener(
       // Vertical swipe
       if (Math.abs(deltaY) >= MIN_SWIPE_DISTANCE) {
         if (deltaY > 0 && dy === 0) {
-          // Down swipe
           dx = 0;
           dy = grid;
         } else if (deltaY < 0 && dy === 0) {
-          // Up swipe
           dx = 0;
           dy = -grid;
         }

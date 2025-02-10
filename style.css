@@ -168,17 +168,11 @@ body {
 
 /* Controls Hint */
 .controls-hint {
-  font-size: 0.7rem;
-  line-height: 2.5;
-  gap: 8px;
-  margin: 8px 0;
-  padding: 12px 8px;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 210, 211, 0.2);
   color: rgba(0, 210, 211, 0.8);
-  background-color: rgba(0, 210, 211, 0.1);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
+  font-size: 0.7rem;
+  gap: 8px;
+  margin-bottom: 16px;
+  line-height: 2;
 }
 
 .controls-hint span {
@@ -239,17 +233,6 @@ canvas {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 100;
   border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-#logoutBtn {
-  margin-top: 8px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  display: none; /* Hide by default */
-}
-
-#logoutBtn.show {
-  display: flex; /* Show when .show class is added */
 }
 
 .dropdown-item {
@@ -536,6 +519,14 @@ canvas {
   align-items: center;
 }
 
+#logoutBtn {
+  display: none; 
+}
+
+#logoutBtn.show {
+  display: flex;
+}
+
 /* --------------------
   Theme Variations
 -------------------- */
@@ -557,8 +548,8 @@ body.light-theme .item {
 -------------------- */
 @media (max-width: 600px) {
   .game-header {
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .dropdown-content {

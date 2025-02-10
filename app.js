@@ -34,6 +34,9 @@ const cancelRegisterBtn = document.getElementById("cancelRegister");
 const playerNameDisplay = document.getElementById("playerName");
 const topScoresList = document.getElementById("topScores");
 
+// Add these constants with the other DOM element references
+const logoutBtn = document.getElementById("logoutBtn");
+
 let currentPlayer = {
   name: "Guest",
   email: "",
@@ -60,7 +63,10 @@ function loadPlayerData() {
   if (savedPlayer) {
     currentPlayer = JSON.parse(savedPlayer);
     playerNameDisplay.textContent = currentPlayer.name;
-    registerBtn.textContent = "Change Player";
+    registerBtn.children[1].textContent = "Change Player";
+    logoutBtn.classList.add("show"); // Show logout button
+  } else {
+    logoutBtn.classList.remove("show"); // Hide logout button
   }
 }
 
@@ -447,7 +453,8 @@ registerForm.addEventListener("submit", (e) => {
   localStorage.setItem("snakeGamePlayer", JSON.stringify(currentPlayer));
   playerNameDisplay.textContent = currentPlayer.name;
   registerModal.classList.remove("active");
-  registerBtn.textContent = "Change Player";
+  registerBtn.children[1].textContent = "Change Player";
+  logoutBtn.classList.add("show"); // Show logout button
 });
 
 registerBtn.addEventListener("click", () => {
@@ -458,6 +465,22 @@ registerBtn.addEventListener("click", () => {
 cancelRegisterBtn.addEventListener("click", () => {
   registerModal.classList.remove("active");
 });
+
+// Add this function with the other user management functions
+function logout() {
+  currentPlayer = {
+    name: "Guest",
+    email: "",
+  };
+  playerNameDisplay.textContent = currentPlayer.name;
+  localStorage.removeItem("snakeGamePlayer");
+  registerBtn.children[1].textContent = "Register";
+  logoutBtn.classList.remove("show"); // Hide logout button
+  dropdown.classList.remove("active");
+}
+
+// Add this event listener with the other event listeners
+logoutBtn.addEventListener("click", logout);
 
 // Initialize player data
 loadPlayerData();
@@ -546,3 +569,73 @@ function applyTheme() {
 
 // Add to initialization
 loadSettings();
+
+// Add these variables after other variables declarations
+let touchStartX = 0;
+let touchStartY = 0;
+const MIN_SWIPE_DISTANCE = 30;
+
+// Add these touch event listeners after other event listeners
+canvas.addEventListener(
+  "touchstart",
+  (e) => {
+    e.preventDefault();
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  },
+  false
+);
+
+canvas.addEventListener(
+  "touchmove",
+  (e) => {
+    e.preventDefault(); // Prevent scrolling while playing
+  },
+  false
+);
+
+canvas.addEventListener(
+  "touchend",
+  (e) => {
+    if (!isGameRunning || isPaused) {
+      startGame();
+      return;
+    }
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+
+    // Determine if the swipe was primarily horizontal or vertical
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      // Horizontal swipe
+      if (Math.abs(deltaX) >= MIN_SWIPE_DISTANCE) {
+        if (deltaX > 0 && dx === 0) {
+          // Right swipe
+          dx = grid;
+          dy = 0;
+        } else if (deltaX < 0 && dx === 0) {
+          // Left swipe
+          dx = -grid;
+          dy = 0;
+        }
+      }
+    } else {
+      // Vertical swipe
+      if (Math.abs(deltaY) >= MIN_SWIPE_DISTANCE) {
+        if (deltaY > 0 && dy === 0) {
+          // Down swipe
+          dx = 0;
+          dy = grid;
+        } else if (deltaY < 0 && dy === 0) {
+          // Up swipe
+          dx = 0;
+          dy = -grid;
+        }
+      }
+    }
+  },
+  false
+);
